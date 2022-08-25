@@ -6,7 +6,6 @@ public class Comment {
     private long topicId;
     private String content;
     private int floor;
-    private int likedCount;
     private String pubishTime;
 
     public Comment() {
@@ -58,14 +57,6 @@ public class Comment {
 
     public void setPubishTime(String pubishTime) {
         this.pubishTime = pubishTime;
-    }
-
-    public int getLikedCount() {
-        return likedCount;
-    }
-
-    public void setLikedCount(int likedCount) {
-        this.likedCount = likedCount;
     }
 
 }
