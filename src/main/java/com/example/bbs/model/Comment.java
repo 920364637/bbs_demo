@@ -1,6 +1,7 @@
 package com.example.bbs.model;
 
 public class Comment {
+    private long id;
     private long userId;
     private long CommentId;
     private long topicId;
@@ -9,6 +10,14 @@ public class Comment {
     private String pubishTime;
 
     public Comment() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public long getUserId() {

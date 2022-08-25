@@ -1,6 +1,7 @@
 package com.example.bbs.model;
 
 public class Topic {
+    private long id;
     private long userId;
     private long topicId;
     private String title;
@@ -8,6 +9,14 @@ public class Topic {
     private String pubishTime;
 
     public Topic() {
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public long getUserId() {
