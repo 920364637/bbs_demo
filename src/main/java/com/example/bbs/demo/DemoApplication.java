@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @MapperScan("com.example.bbs.mapper")
 @ComponentScan("com.example.bbs.dao")
+@ComponentScan("com.example.bbs.controller")
+@ComponentScan("com.example.bbs.service")
 public class DemoApplication {
 
 	public static void main(String[] args) {

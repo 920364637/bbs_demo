@@ -1,7 +1,6 @@
 package com.example.bbs.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.example.bbs.mapper.UserMapper;
