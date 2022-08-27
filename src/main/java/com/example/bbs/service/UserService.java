@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.bbs.dao.UserDao;
 import com.example.bbs.model.User;
+import com.example.bbs.response.Response;
 import com.example.bbs.response.user.LoginResponse;
+import com.example.bbs.response.user.RegisterResponse;
 import com.example.bbs.util.Context;
 
 @Service
@@ -13,25 +15,64 @@ public class UserService {
     @Autowired
     UserDao dao;
 
-    public void Login(Context context) {
-        long userId = Long.parseLong((String) context.request.get("user_id"));
+    public void register(Context context) {
+        String name = (String) context.request.get("name");
         String password = (String) context.request.get("password");
-        User user = dao.findUserByUserId(userId);
-        if (user == null) {
+        String avatarUrl = (String) context.request.get("password");
+        if (name == null || password == null) {
             context.code = 1;
+            context.message = "missing argument";
+            context.data = null;
+            return;
+        }
+        User user = dao.findUserByName(name);
+        if (user != null) {
+            context.code = Response.CODE_ERROR;
+            context.message = "用户名已存在";
+            context.data = null;
+            return;
+        }
+        user = new User();
+        user.setName(name);
+        user.setPassword(password);
+        user.setAvatarUrl(avatarUrl);
+
+        if (!dao.insert(user)) {
+            context.code = Response.CODE_ERROR;
+            context.message = "注册失败";
+            context.data = null;
+            return;
+        }
+        ((RegisterResponse) context.data).userId = user.getUserId();
+
+    }
+
+    public void Login(Context context) {
+        String name = (String) context.request.get("name");
+        String password = (String) context.request.get("password");
+        if (name == null || password == null) {
+            context.code = 1;
+            context.message = "missing argument";
+            context.data = null;
+            return;
+        }
+
+        User user = dao.findUserByName(name);
+        if (user == null) {
+            context.code = Response.CODE_ERROR;
             context.message = "用户不存在";
-            context.response = null;
+            context.data = null;
             return;
         }
 
         if (!password.equals(user.getPassword())) {
-            context.code = 1;
+            context.code = Response.CODE_ERROR;
             context.message = "密码错误";
-            context.response = null;
+            context.data = null;
             return;
         }
 
-        ((LoginResponse) context.response).user_id = user.getUserId();
+        ((LoginResponse) context.data).user_id = user.getUserId();
     }
 
 }

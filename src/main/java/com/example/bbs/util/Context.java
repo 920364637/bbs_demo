@@ -7,18 +7,18 @@ import com.example.bbs.response.Response;
 public class Context {
     public int code;
     public String message = "success";
-    public Response response;
+    public Response data;
     public Map<String, Object> request;
 
     public class ResponseData {
-        int code;
+        int code = Response.CODE_OK;
         String message;
-        Response response;
+        Response data;
 
-        public ResponseData(int code, String message, Response response) {
+        public ResponseData(int code, String message, Response data) {
             this.code = code;
             this.message = message;
-            this.response = response;
+            this.data = data;
         }
 
         public int getCode() {
@@ -37,23 +37,23 @@ public class Context {
             this.message = message;
         }
 
-        public Response getResponse() {
-            return response;
+        public Response getData() {
+            return data;
         }
 
-        public void setResponse(Response response) {
-            this.response = response;
+        public void setData(Response data) {
+            this.data = data;
         }
 
     }
 
-    public Context(Map<String, Object> request, Response response) {
-        this.response = response;
+    public Context(Map<String, Object> request, Response data) {
+        this.data = data;
         this.request = request;
     }
 
     public ResponseData getResponse() {
-        return new ResponseData(code, message, response);
+        return new ResponseData(code, message, data);
     }
 
 }

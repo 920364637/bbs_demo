@@ -17,7 +17,8 @@ public class UserDao {
 
     public boolean insert(User user) {
         try {
-            user.setUserId(User.generateUserId(userMapper));
+            long userId = User.generateUserId(userMapper);
+            user.setUserId(userId);
             userMapper.insert(user);
             return true;
         } catch (Exception e) {
