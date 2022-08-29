@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.bbs.demo.DemoApplication;
+import com.example.bbs.app.Application;
 import com.example.bbs.model.User;
 
-@SpringBootTest(classes = DemoApplication.class)
+@SpringBootTest(classes = Application.class)
 public class UserDaoTests {
 
     @Autowired

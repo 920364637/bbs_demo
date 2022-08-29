@@ -20,7 +20,7 @@ public class User {
         long id;
         User user;
         do {
-            id = (long) (r.nextInt(999999999) + 1000000000);
+            id = (long) (r.nextInt(899999999) + 100000000);
             user = userMapper.findUserByUserId(id);
         } while (user != null);
 
