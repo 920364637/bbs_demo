@@ -3,21 +3,29 @@
 <mapper namespace="com.example.bbs.mapper.UserMapper">
 
     <select id="findUserByUserId" resultType="com.example.bbs.model.User">
-        select * from `user` where user_id = #{userId};
+        select * 
+        from `user` 
+        where user_id = #{userId};
     </select>
 
 
     <select id="findUserByName" resultType="com.example.bbs.model.User">
-        select * from `user` where name = #{name};
+        select * 
+        from `user` 
+        where name = #{name};
     </select>
 
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
-        insert into `user`(user_id, name, password, avatar_url) values(#{userId}, #{name}, #{password}, #{avatarUrl});
+        insert into `user`
+        (user_id, name, password, avatar_url) 
+        values
+        (#{userId}, #{name}, #{password}, #{avatarUrl});
     </insert>
 
     <update id="update">
-        update `user` set name = #{name}, password = #{password}, avatar_url = #{avatarUrl}
+        update `user` 
+        set name = #{name}, password = #{password}, avatar_url = #{avatarUrl}
         where user_id = #{userId};
     </update>
 </mapper>

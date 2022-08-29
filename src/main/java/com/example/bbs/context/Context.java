@@ -13,6 +13,10 @@ public class Context {
     @JsonIgnore
     public Map<String, Object> request;
 
+    public Context(Map<String, Object> request) {
+        this.request = request;
+    }
+
     public Context(Map<String, Object> request, Response data) {
         this.data = data;
         this.request = request;

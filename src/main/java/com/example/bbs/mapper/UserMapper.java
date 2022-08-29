@@ -14,5 +14,5 @@ public interface UserMapper {
 
     void insert(User user);
 
-    boolean update(User user);
+    void update(User user);
 }
