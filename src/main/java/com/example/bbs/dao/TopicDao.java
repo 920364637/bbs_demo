@@ -19,6 +19,7 @@ public class TopicDao {
             Topic topic = topicMapper.findTopicByTopicId(topicId);
             return topic;
         } catch (Exception e) {
+            System.out.println(e.getStackTrace());
             return null;
         }
     }
@@ -30,6 +31,7 @@ public class TopicDao {
             topicMapper.insert(topic);
             return true;
         } catch (Exception e) {
+            System.out.println(e.getStackTrace());
             return false;
         }
     }
@@ -39,6 +41,7 @@ public class TopicDao {
             List<Map<String, Object>> topicPreviewListMap = topicMapper.findTopicPreviewByUserId(userId);
             return topicPreviewListMap;
         } catch (Exception e) {
+            System.out.println(e.getStackTrace());
             return null;
         }
     }
@@ -48,6 +51,7 @@ public class TopicDao {
             List<Map<String, Object>> topicPreviewListMap = topicMapper.findTopicPreviewByZoneId(zoneId);
             return topicPreviewListMap;
         } catch (Exception e) {
+            System.out.println(e.getStackTrace());
             return null;
         }
     }

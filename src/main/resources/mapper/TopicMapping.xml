@@ -21,7 +21,7 @@
         where topic_id = #{topicId};
     </select>
 
-    <insert id="insert" useGeneratedKeys="true" keyProperty="insert">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
         insert into topic
         (topic_id, user_id, zone_id, title, content)
         values
